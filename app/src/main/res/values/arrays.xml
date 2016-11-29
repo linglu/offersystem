@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="channel">
+        <item>DHL-A</item>
+        <item>DHL-B </item>
+        <item>DHL-C</item>
+        <item>FEDEX</item>
+    </string-array>
+
+    <string-array name="country">
+        <item>美国</item>
+        <item>香港</item>
+        <item>英国</item>
+    </string-array>
+
+</resources>
