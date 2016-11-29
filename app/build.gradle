@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "24.0.2"
+    defaultConfig {
+        applicationId "com.linky.offersystem"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+greendao {
+    schemaVersion 1
+    daoPackage 'com.linky.offersystem.dao'
+    targetGenDir 'src/main/java'
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    testCompile 'junit:junit:4.12'
+
+    // greenDao 参考：
+    compile 'org.greenrobot:greendao:3.0.0'
+    compile 'org.greenrobot:greendao-generator:3.0.0'
+
+    compile 'com.android.support:recyclerview-v7:25.0.1'
+    compile 'com.android.support:cardview-v7:25.0.1'
+
+    // [butterKnife](http://jakewharton.github.io/butterknife/)
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    // [dagger 依赖](http://blog.csdn.net/liangjiu2009/article/details/51879609)
+    compile 'com.google.dagger:dagger:2.0.2'
+    apt "com.google.dagger:dagger-compiler:2.0.2"
+    provided 'javax.annotation:jsr250-api:1.0'
+
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'javax.inject:javax.inject:1'
+
+    // 用于记录日志信息 https://github.com/orhanobut/logger
+    compile 'com.orhanobut:logger:1.15'
+}
