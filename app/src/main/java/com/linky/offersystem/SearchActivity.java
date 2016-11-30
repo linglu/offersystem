@@ -1,4 +1,4 @@
-package com.linky.shippricesearch;
+package com.linky.offersystem;
 
 import android.app.Activity;
 import android.os.Bundle;
