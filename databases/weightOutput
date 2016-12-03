@@ -1,0 +1,8 @@
+#!/bin/bash
+awk '{print $1}' data | while read line
+do
+  for i in {1..29}
+  do
+    echo $line 
+  done
+done

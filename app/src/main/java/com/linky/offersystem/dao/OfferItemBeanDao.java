@@ -25,9 +25,9 @@ public class OfferItemBeanDao extends AbstractDao<OfferItemBean, Long> {
     */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property Channel = new Property(1, int.class, "channel", false, "CHANNEL");
-        public final static Property Country = new Property(2, int.class, "country", false, "COUNTRY");
-        public final static Property Weight = new Property(3, double.class, "weight", false, "WEIGHT");
+        public final static Property Channel = new Property(1, String.class, "channel", false, "CHANNEL");
+        public final static Property Country = new Property(2, String.class, "country", false, "COUNTRY");
+        public final static Property Weight = new Property(3, String.class, "weight", false, "WEIGHT");
         public final static Property Price = new Property(4, double.class, "price", false, "PRICE");
         public final static Property FuelRate = new Property(5, double.class, "fuelRate", false, "FUEL_RATE");
         public final static Property SubCharge = new Property(6, double.class, "subCharge", false, "SUB_CHARGE");
@@ -48,9 +48,9 @@ public class OfferItemBeanDao extends AbstractDao<OfferItemBean, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"OFFER_ITEM_BEAN\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
-                "\"CHANNEL\" INTEGER NOT NULL ," + // 1: channel
-                "\"COUNTRY\" INTEGER NOT NULL ," + // 2: country
-                "\"WEIGHT\" REAL NOT NULL ," + // 3: weight
+                "\"CHANNEL\" TEXT," + // 1: channel
+                "\"COUNTRY\" TEXT," + // 2: country
+                "\"WEIGHT\" TEXT," + // 3: weight
                 "\"PRICE\" REAL NOT NULL ," + // 4: price
                 "\"FUEL_RATE\" REAL NOT NULL ," + // 5: fuelRate
                 "\"SUB_CHARGE\" REAL NOT NULL ," + // 6: subCharge
@@ -71,9 +71,21 @@ public class OfferItemBeanDao extends AbstractDao<OfferItemBean, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
-        stmt.bindLong(2, entity.getChannel());
-        stmt.bindLong(3, entity.getCountry());
-        stmt.bindDouble(4, entity.getWeight());
+ 
+        String channel = entity.getChannel();
+        if (channel != null) {
+            stmt.bindString(2, channel);
+        }
+ 
+        String country = entity.getCountry();
+        if (country != null) {
+            stmt.bindString(3, country);
+        }
+ 
+        String weight = entity.getWeight();
+        if (weight != null) {
+            stmt.bindString(4, weight);
+        }
         stmt.bindDouble(5, entity.getPrice());
         stmt.bindDouble(6, entity.getFuelRate());
         stmt.bindDouble(7, entity.getSubCharge());
@@ -92,9 +104,21 @@ public class OfferItemBeanDao extends AbstractDao<OfferItemBean, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
-        stmt.bindLong(2, entity.getChannel());
-        stmt.bindLong(3, entity.getCountry());
-        stmt.bindDouble(4, entity.getWeight());
+ 
+        String channel = entity.getChannel();
+        if (channel != null) {
+            stmt.bindString(2, channel);
+        }
+ 
+        String country = entity.getCountry();
+        if (country != null) {
+            stmt.bindString(3, country);
+        }
+ 
+        String weight = entity.getWeight();
+        if (weight != null) {
+            stmt.bindString(4, weight);
+        }
         stmt.bindDouble(5, entity.getPrice());
         stmt.bindDouble(6, entity.getFuelRate());
         stmt.bindDouble(7, entity.getSubCharge());
@@ -114,9 +138,9 @@ public class OfferItemBeanDao extends AbstractDao<OfferItemBean, Long> {
     public OfferItemBean readEntity(Cursor cursor, int offset) {
         OfferItemBean entity = new OfferItemBean( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.getInt(offset + 1), // channel
-            cursor.getInt(offset + 2), // country
-            cursor.getDouble(offset + 3), // weight
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // channel
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // country
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // weight
             cursor.getDouble(offset + 4), // price
             cursor.getDouble(offset + 5), // fuelRate
             cursor.getDouble(offset + 6), // subCharge
@@ -128,9 +152,9 @@ public class OfferItemBeanDao extends AbstractDao<OfferItemBean, Long> {
     @Override
     public void readEntity(Cursor cursor, OfferItemBean entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setChannel(cursor.getInt(offset + 1));
-        entity.setCountry(cursor.getInt(offset + 2));
-        entity.setWeight(cursor.getDouble(offset + 3));
+        entity.setChannel(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
+        entity.setCountry(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setWeight(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setPrice(cursor.getDouble(offset + 4));
         entity.setFuelRate(cursor.getDouble(offset + 5));
         entity.setSubCharge(cursor.getDouble(offset + 6));

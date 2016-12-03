@@ -1,7 +1,9 @@
-package com.linky.offersystem;
+package com.linky.offersystem.view.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.linky.offersystem.R;
 
 /**
  * Created by linky on 16-11-27.

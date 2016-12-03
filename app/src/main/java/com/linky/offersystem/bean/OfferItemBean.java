@@ -1,5 +1,7 @@
 package com.linky.offersystem.bean;
 
+import android.support.v7.widget.StaggeredGridLayoutManager;
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
@@ -12,9 +14,9 @@ import org.greenrobot.greendao.annotation.Generated;
 public class OfferItemBean {
     @Id
     public Long id;
-    public int channel; // 渠道，1 DHL, 2 FEDEX
-    public int country;
-    public double weight;
+    public String channel; // 渠道，1 DHL, 2 FEDEX
+    public String country;
+    public String weight;
     public double price;
     public double fuelRate;     // 燃油费率
     public double subCharge;    // 附加费
@@ -43,22 +45,10 @@ public class OfferItemBean {
     public void setPrice(double price) {
         this.price = price;
     }
-    public double getWeight() {
-        return this.weight;
-    }
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-    public int getCountry() {
-        return this.country;
-    }
-    public void setCountry(int country) {
-        this.country = country;
-    }
-    public int getChannel() {
+    public String getChannel() {
         return this.channel;
     }
-    public void setChannel(int channel) {
+    public void setChannel(String channel) {
         this.channel = channel;
     }
     public Long getId() {
@@ -67,8 +57,20 @@ public class OfferItemBean {
     public void setId(Long id) {
         this.id = id;
     }
-    @Generated(hash = 1858197355)
-    public OfferItemBean(Long id, int channel, int country, double weight,
+    public void setCountry(String country) {
+        this.country = country;
+    }
+    public String getCountry() {
+        return this.country;
+    }
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+    public String getWeight() {
+        return this.weight;
+    }
+    @Generated(hash = 1681750761)
+    public OfferItemBean(Long id, String channel, String country, String weight,
             double price, double fuelRate, double subCharge, String remark) {
         this.id = id;
         this.channel = channel;

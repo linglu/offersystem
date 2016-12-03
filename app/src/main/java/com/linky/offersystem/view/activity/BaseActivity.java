@@ -1,4 +1,4 @@
-package com.linky.offersystem.view;
+package com.linky.offersystem.view.activity;
 
 import android.support.v7.app.AppCompatActivity;
 

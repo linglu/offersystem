@@ -1,4 +1,4 @@
-package com.linky.offersystem;
+package com.linky.offersystem.view.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.linky.offersystem.R;
 
 import java.util.ArrayList;
 import java.util.List;
